@@ -9,6 +9,8 @@ import PlanetDescription from './PlanetDesc';
 import BookingPage from './Booking';
 import PaymentPage from "./Payment";
 import TicketPrintPage from "./TicketPrintPage";
+import Login from './Login';
+import Register from './Register';
 
 export {
     Home,
@@ -21,5 +23,7 @@ export {
     PlanetDescription,
     BookingPage,
     PaymentPage,
-    TicketPrintPage
+    TicketPrintPage,
+    Login,
+    Register
 }

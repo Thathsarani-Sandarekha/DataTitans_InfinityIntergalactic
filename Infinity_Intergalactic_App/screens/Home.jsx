@@ -9,9 +9,19 @@ export default function Home() {
     navigation.navigate('Planets');
   };
 
+  const handleLoginButtonPress = () => {
+    navigation.navigate('Login');
+  };
+
+  const handleRegisterButtonPress = () => {
+    navigation.navigate('Register');
+  };
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Button title="Go to Planets" onPress={handlePlanetButtonPress} />
+      <Button title="Go to Login" onPress={handleLoginButtonPress} />
+      <Button title="Go to Register" onPress={handleRegisterButtonPress} />
     </View>
   );
 }

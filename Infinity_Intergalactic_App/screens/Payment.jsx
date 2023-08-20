@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, TextInput, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';// Make sure to provide the correct path to your constants file
-import response2 from './responseValues'; // Import the response object
-import { Picker } from '@react-native-picker/picker'; 
+import { useNavigation } from '@react-navigation/native';
+import { Picker } from '@react-native-picker/picker';
 
 export default function PaymentPage({ route }) {
   const { planetName, fromLocation, toLocation, tripDate, returnDate, passengers, selectedClass } = route.params;
@@ -15,20 +14,17 @@ export default function PaymentPage({ route }) {
   const [cvv, setCVV] = useState('');
 
   const handleBackToBookingPress = () => {
-    navigation.goBack(); // Navigate back to the BookingPage
+    navigation.goBack();
   };
 
   const handleConfirmButtonPress = () => {
-    if (cardNumber === '' || expiryMonth === '' || expiryYear === '' || cardholderName === '' || cvv === '') {
-      Alert.alert('Error', 'Please fill in all the payment details');
+    if (!validateInputs()) {
       return;
     }
 
-    // Perform payment processing logic here
-    // For demonstration purposes, let's show an alert
+    // Payment processing logic (mocked with an alert)
     Alert.alert('Success', 'Payment successful! Your ticket is confirmed.');
 
-    // After payment success, navigate to the TicketPrintPage
     navigation.navigate('TicketPrintPage', {
       planetName,
       fromLocation,
@@ -43,23 +39,44 @@ export default function PaymentPage({ route }) {
       cardholderName,
       cvv
     });
-
-    // ... (existing response code)
   };
 
-  // Generate futuristic month options for the year 2160
+  const validateInputs = () => {
+    if (
+      cardNumber.trim() === '' ||
+      expiryMonth === '' ||
+      expiryYear === '' ||
+      cardholderName.trim() === '' ||
+      cvv === ''
+    ) {
+      Alert.alert('Error', 'Please fill in all the payment details');
+      return false;
+    }
+
+    if (!/^\d{16}$/.test(cardNumber)) {
+      Alert.alert('Error', 'Invalid card number');
+      return false;
+    }
+
+    if (!/^\d{3,4}$/.test(cvv)) {
+      Alert.alert('Error', 'Invalid CVV');
+      return false;
+    }
+
+    return true;
+  };
+
   const futuristicMonths = [
-    "Januvium", "Februvium", "Marsium", "Aprilius", "Maium", "Junium",
-    "Julium", "Augurium", "Septemvis", "Octarium", "Novemvis", "Decembra"
+    'Januvium', 'Februvium', 'Marsium', 'Aprilius', 'Maium', 'Junium',
+    'Julium', 'Augurium', 'Septemvis', 'Octarium', 'Novemvis', 'Decembra'
   ];
 
-  // Generate a range of futuristic years starting from 2160
   const futuristicYears = Array.from({ length: 50 }, (_, index) => (2160 + index).toString());
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Payment Page for {planetName}</Text>
-      
+
       <TextInput
         placeholder="Card Number"
         value={cardNumber}
