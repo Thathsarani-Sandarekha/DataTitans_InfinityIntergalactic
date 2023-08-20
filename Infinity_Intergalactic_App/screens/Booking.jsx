@@ -3,11 +3,13 @@ import { View, Text, Button, TextInput } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
+import response from './responseValues'; // Import the response object
 
 export default function BookingPage({ route }) {
   const { planetName } = route.params;
   const navigation = useNavigation();
-
+  const [name, setName] = useState(''); // State for name input
+  const [email, setEmail] = useState(''); // State for email input
   const [fromLocation, setFromLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
   const [tripDate, setTripDate] = useState(new Date());
@@ -31,8 +33,25 @@ export default function BookingPage({ route }) {
       returnDate,
       passengers,
       selectedClass,
+      name,
+      email
     });
+    console.log('handlePaymentPress function executed');
+    response.planetName = planetName;
+    response.fromLocation = fromLocation;
+    response.toLocation = toLocation;
+    response.tripDate = tripDate;
+    response.returnDate = returnDate;
+    response.passengers = passengers;
+    response.selectedClass = selectedClass;
+    response.name = name;
+    response.email = email;
+
+    console.log('handlePaymentPress function executed');
+    console.log('Navigation values:', response);
   };
+
+  
 
   const handleTripDateChange = (event, selectedDate) => {
     setShowDatePicker(false);
@@ -51,6 +70,20 @@ export default function BookingPage({ route }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Booking Page for {planetName}</Text>
+
+      <TextInput
+        placeholder="Name"
+        value={name}
+        onChangeText={setName}
+        style={{ marginBottom: 10, padding: 5, borderWidth: 1 }}
+      />
+
+      <TextInput
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        style={{ marginBottom: 10, padding: 5, borderWidth: 1 }}
+      />
       
       <TextInput
         placeholder="From"
