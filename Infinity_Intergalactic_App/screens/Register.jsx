@@ -9,8 +9,7 @@ export default function RegisterPage() {
   const navigation = useNavigation();
 
   const handleRegister = () => {
-    if (password !== confirmPassword) {
-      Alert.alert('Error', 'Passwords do not match.');
+    if (!validateInputs()) {
       return;
     }
 
@@ -21,6 +20,22 @@ export default function RegisterPage() {
 
   const handleLoginLinkPress = () => {
     navigation.navigate('Login');
+  };
+
+  const validateInputs = () => {
+    if (username.trim() === '' || password === '' || confirmPassword === '') {
+      Alert.alert('Error', 'Please fill in all the registration details.');
+      return false;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert('Error', 'Passwords do not match.');
+      return false;
+    }
+
+    // You can add more advanced validation rules here if needed
+
+    return true;
   };
 
   return (

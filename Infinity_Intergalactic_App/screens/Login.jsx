@@ -8,6 +8,10 @@ export default function LoginPage() {
   const navigation = useNavigation();
 
   const handleLogin = () => {
+    if (!validateInputs()) {
+      return;
+    }
+
     // Add your actual login logic here
     // For now, let's just simulate successful login
     if (username === 'user' && password === 'password') {
@@ -19,6 +23,17 @@ export default function LoginPage() {
 
   const handleRegisterLinkPress = () => {
     navigation.navigate('Register');
+  };
+
+  const validateInputs = () => {
+    if (username.trim() === '' || password === '') {
+      Alert.alert('Error', 'Please enter both username and password.');
+      return false;
+    }
+
+    // You can add more advanced validation rules here if needed
+
+    return true;
   };
 
   return (
