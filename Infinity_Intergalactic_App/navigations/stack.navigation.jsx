@@ -1,13 +1,15 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { PlanetDescription, Planets, BookingPage, PaymentPage, TicketPrintPage, BookingHistory, Home } from '../screens';
+import { PlanetDescription, Planets, BookingPage, PaymentPage, TicketPrintPage, BookingHistory, Home, Login, Register} from '../screens';
 
 const Stack = createStackNavigator();
 
-const StackNavigation = () => {
+const stackNavigation = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="Planets" component={Planets} />
       <Stack.Screen name="PlanetDescription" component={PlanetDescription} />
       <Stack.Screen name="BookingPage" component={BookingPage} />
@@ -18,4 +20,4 @@ const StackNavigation = () => {
   );
 };
 
-export default StackNavigation;
+export default stackNavigation;
