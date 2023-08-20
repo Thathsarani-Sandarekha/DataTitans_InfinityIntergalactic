@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Text, Button, TextInput, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
-import DateTimePicker from '@react-native-community/datetimepicker'; // Import DateTimePicker
-import response from './responseValues'; // Import the response object
+import DateTimePicker from '@react-native-community/datetimepicker';
+import response from './responseValues';
 
 export default function BookingPage({ route }) {
   const { planetName } = route.params;
   const navigation = useNavigation();
-  const [name, setName] = useState(''); // State for name input
-  const [email, setEmail] = useState(''); // State for email input
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [fromLocation, setFromLocation] = useState('');
   const [toLocation, setToLocation] = useState('');
   const [tripDate, setTripDate] = useState(new Date());
@@ -19,24 +19,45 @@ export default function BookingPage({ route }) {
   const [showDatePicker, setShowDatePicker] = useState(false);
 
   const handleCancelPress = () => {
-    navigation.goBack(); // Navigate back to the previous screen (PlanetDescription)
+    navigation.goBack();
   };
 
   const handlePaymentPress = () => {
-    // Navigate to the PaymentPage or any other payment-related screen
-    // You can replace 'PaymentPage' with the actual screen name for payment
-    navigation.navigate('PaymentPage', {
-      planetName,
-      fromLocation,
-      toLocation,
-      tripDate,
-      returnDate,
-      passengers,
-      selectedClass,
-      name,
-      email
-    });
-    console.log('handlePaymentPress function executed');
+    let errorMessage = '';
+
+    if (name.trim() === '') {
+      errorMessage += 'Name is required.\n';
+    }
+
+    if (email.trim() === '') {
+      errorMessage += 'Email is required.\n';
+    }
+
+    if (fromLocation.trim() === '') {
+      errorMessage += 'From location is required.\n';
+    }
+
+    if (toLocation.trim() === '') {
+      errorMessage += 'To location is required.\n';
+    }
+
+    if (isNaN(passengers) || parseInt(passengers) <= 0) {
+      errorMessage += 'Number of passengers must be a positive numeric value.\n';
+    }
+
+    if (tripDate <= new Date()) {
+      errorMessage += 'Trip date must be in the future.\n';
+    }
+
+    if (returnDate <= tripDate) {
+      errorMessage += 'Return date must be after the trip date.\n';
+    }
+
+    if (errorMessage !== '') {
+      Alert.alert('Invalid Input', errorMessage);
+      return;
+    }
+
     response.planetName = planetName;
     response.fromLocation = fromLocation;
     response.toLocation = toLocation;
@@ -47,11 +68,8 @@ export default function BookingPage({ route }) {
     response.name = name;
     response.email = email;
 
-    console.log('handlePaymentPress function executed');
-    console.log('Navigation values:', response);
+    navigation.navigate('PaymentPage', response);
   };
-
-  
 
   const handleTripDateChange = (event, selectedDate) => {
     setShowDatePicker(false);
@@ -84,7 +102,7 @@ export default function BookingPage({ route }) {
         onChangeText={setEmail}
         style={{ marginBottom: 10, padding: 5, borderWidth: 1 }}
       />
-      
+
       <TextInput
         placeholder="From"
         value={fromLocation}
