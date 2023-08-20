@@ -18,10 +18,14 @@ export default function Home() {
   };
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Button title="Go to Planets" onPress={handlePlanetButtonPress} />
-      <Button title="Go to Login" onPress={handleLoginButtonPress} />
-      <Button title="Go to Register" onPress={handleRegisterButtonPress} />
+    <View style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'flex-start', paddingTop: 20, paddingRight: 20 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+        <Button title="Go to Planets" onPress={handlePlanetButtonPress} />
+        <View style={{ flexDirection: 'row' }}>
+          <Button title="Login" onPress={handleLoginButtonPress} />
+          <Button title="Register" onPress={handleRegisterButtonPress} />
+        </View>
+      </View>
     </View>
   );
 }
