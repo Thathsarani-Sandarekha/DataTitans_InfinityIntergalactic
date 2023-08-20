@@ -12,8 +12,6 @@ export default function LoginPage() {
       return;
     }
 
-    // Add your actual login logic here
-    // For now, let's just simulate successful login
     if (username === 'user' && password === 'password') {
       Alert.alert('Success', 'Login successful!');
     } else {
@@ -30,8 +28,6 @@ export default function LoginPage() {
       Alert.alert('Error', 'Please enter both username and password.');
       return false;
     }
-
-    // You can add more advanced validation rules here if needed
 
     return true;
   };

@@ -13,8 +13,6 @@ export default function RegisterPage() {
       return;
     }
 
-    // Add your actual registration logic here
-    // For now, let's just simulate successful registration
     Alert.alert('Success', 'Registration successful!');
   };
 
@@ -33,7 +31,6 @@ export default function RegisterPage() {
       return false;
     }
 
-    // You can add more advanced validation rules here if needed
 
     return true;
   };
