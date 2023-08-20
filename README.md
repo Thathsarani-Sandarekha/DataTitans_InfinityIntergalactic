@@ -2,7 +2,9 @@
 
 # Infinity Intergalactic README
 
-Welcome to Infinity Intergalactic! This document will guide you through the process of setting up and running the application on your local environment.
+Welcome to Infinity Intergalactic! Where the stars are the limit! 
+
+This document will guide you through the process of setting up and running the application on your local environment.
 
 ## Table of Contents
 
