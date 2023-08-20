@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { DrawerItemList } from '@react-navigation/drawer';
-import { User } from '../assets/images/profile.jpeg';
+import User from '../assets/images/profile.jpeg';
 import { COLORS } from '../constents';
 
 const CustomDrawerContent = (props) => {
@@ -34,7 +34,7 @@ const CustomDrawerContent = (props) => {
             color: COLORS.black,
           }}
         >
-          Isabella Joanna
+          Joey King
         </Text>
       </View>
       <DrawerItemList {...props} />

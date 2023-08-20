@@ -6,13 +6,19 @@ export default function About() {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text style={{ fontSize: 24, fontWeight: 'bold' }}>About Us</Text>
       <Text style={{ marginTop: 10, fontSize: 16 }}>
-        Welcome to our About Us page! We are dedicated to providing high-quality products and excellent customer service.
+      Infinity Intergalactic is a trailblazing space travel enterprise driven by exploration and innovation, aiming to make space accessible to all. With cutting-edge technology and a resolute commitment to safety, we're turning the dream of space travel into an attainable adventure for everyone.
       </Text>
+      <Text style={{ marginTop: 10, fontSize: 16 }}>Mission</Text>
       <Text style={{ marginTop: 10, fontSize: 16 }}>
-        Our mission is to deliver innovative solutions that meet the needs of our customers and exceed their expectations.
+      To democratize space travel and make the cosmos accessible to all.
       </Text>
+      <Text style={{ marginTop: 10, fontSize: 16 }}>Vision</Text>
       <Text style={{ marginTop: 10, fontSize: 16 }}>
-        Thank you for choosing us. If you have any questions or feedback, please don't hesitate to reach out to us.
+      A world where space exploration is as commonplace as air travel.
+      </Text>
+      <Text style={{ marginTop: 10, fontSize: 16 }}>Objective</Text>
+      <Text style={{ marginTop: 10, fontSize: 16 }}>
+      To create safe, innovative, and transformative space travel experiences for adventurers and scientists alike.
       </Text>
     </View>
   );

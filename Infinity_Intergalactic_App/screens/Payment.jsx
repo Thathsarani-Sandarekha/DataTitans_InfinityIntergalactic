@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, TextInput, Alert } from 'react-native';
+import { View, Text, Button, TextInput, Alert, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 
@@ -66,64 +66,95 @@ export default function PaymentPage({ route }) {
     return true;
   };
 
-  const futuristicMonths = [
-    'Januvium', 'Februvium', 'Marsium', 'Aprilius', 'Maium', 'Junium',
-    'Julium', 'Augurium', 'Septemvis', 'Octarium', 'Novemvis', 'Decembra'
-  ];
+  const futuristicMonths = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
 
-  const futuristicYears = Array.from({ length: 50 }, (_, index) => (2160 + index).toString());
+  const futuristicYears = Array.from({ length: 50 }, (_, index) => (60 + index).toString());
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Payment Page for {planetName}</Text>
+    <ImageBackground
+      source={require('../assets/images/mainbg.jpg')}
+      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+    >
+      <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.6)', padding: 60 }}>
+        <Text style={{ color: '#FFFFFF', marginBottom: '10%', fontSize: 25, textAlign:'center'}}>
+          Payment Page
+        </Text>
 
-      <TextInput
-        placeholder="Card Number"
-        value={cardNumber}
-        onChangeText={setCardNumber}
-        keyboardType="numeric"
-        style={{ marginBottom: 10, padding: 5, borderWidth: 1 }}
-      />
+        <TextInput
+          placeholder="Card Number"
+          placeholderTextColor="#0A6E73"
+          value={cardNumber}
+          onChangeText={setCardNumber}
+          keyboardType="numeric"
+          style={{ marginBottom: 20, padding: 5, borderWidth: 1, fontSize: 20, color:'#fff', textAlign:'center' }}
+        />
 
-      <View style={{ flexDirection: 'row', marginBottom: 10 }}>
-        <Picker
-          selectedValue={expiryMonth}
-          onValueChange={(itemValue) => setExpiryMonth(itemValue)}
-          style={{ flex: 1, marginRight: 5 }}
-        >
-          {futuristicMonths.map((month, index) => (
-            <Picker.Item label={month} value={index.toString()} key={index} />
-          ))}
-        </Picker>
-        
-        <Picker
-          selectedValue={expiryYear}
-          onValueChange={(itemValue) => setExpiryYear(itemValue)}
-          style={{ flex: 1, marginLeft: 5 }}
-        >
-          {futuristicYears.map((year) => (
-            <Picker.Item label={year} value={year} key={year} />
-          ))}
-        </Picker>
+        <View style={{ flexDirection: 'row', marginBottom: 10}}>
+          <View style={{ flex: 1, marginRight: 10 }}>
+            <Text style={{ color: '#0A6E73', marginBottom: 5, fontSize: 18}}>Exp Month</Text>
+            <Picker
+              selectedValue={expiryMonth}
+              onValueChange={(itemValue) => setExpiryMonth(itemValue)}
+            >
+              {futuristicMonths.map((month, index) => (
+                <Picker.Item label={month} value={index.toString()} key={index} />
+              ))}
+            </Picker>
+          </View>
+
+          <View style={{ flex: 1, marginBottom: 10}}>
+            <Text style={{ color: '#0A6E73', marginBottom: 5, fontSize: 18}}>Exp Year</Text>
+            <Picker
+              selectedValue={expiryYear}
+              onValueChange={(itemValue) => setExpiryYear(itemValue)}
+            >
+              {futuristicYears.map((year) => (
+                <Picker.Item label={year} value={year} key={year} />
+              ))}
+            </Picker>
+          </View>
+        </View>
+
+        <TextInput
+          placeholder="Cardholder's Name"
+          placeholderTextColor="#0A6E73"
+          value={cardholderName}
+          onChangeText={setCardholderName}
+          style={{ marginBottom: 10, padding: 5, borderWidth: 1, fontSize: 20, color:'#fff' }}
+        />
+
+        <TextInput
+          placeholder="CVV"
+          placeholderTextColor="#0A6E73"
+          value={cvv}
+          onChangeText={setCVV}
+          keyboardType="numeric"
+          style={{ marginBottom: 10, padding: 5, borderWidth: 1, fontSize: 20, color:'#fff', textAlign:"center" }}
+        />
+
+        <Button
+          title="Back to Booking"
+          onPress={handleBackToBookingPress}
+          style={{
+            backgroundColor: 'red',
+            padding: 10,
+            borderRadius: 5,
+            marginBottom: 10,
+          }}
+          color="#0A6E73"
+        />
+
+        <Button
+          title="Confirm Payment"
+          onPress={handleConfirmButtonPress}
+          style={{
+            backgroundColor: 'red',
+            padding: 10,
+            borderRadius: 5,
+          }}
+          color="#0A6E73"
+        />
       </View>
-
-      <TextInput
-        placeholder="Cardholder's Name"
-        value={cardholderName}
-        onChangeText={setCardholderName}
-        style={{ marginBottom: 10, padding: 5, borderWidth: 1 }}
-      />
-
-      <TextInput
-        placeholder="CVV"
-        value={cvv}
-        onChangeText={setCVV}
-        keyboardType="numeric"
-        style={{ marginBottom: 10, padding: 5, borderWidth: 1 }}
-      />
-
-      <Button title="Back to Booking" onPress={handleBackToBookingPress} />
-      <Button title="Confirm Payment" onPress={handleConfirmButtonPress} />
-    </View>
+    </ImageBackground>
   );
 }

@@ -21,10 +21,8 @@ export default function Planets() {
         <View style={{ alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
           <Image source={item.image} style={[imageStyle, { margin: 10 }]} resizeMode="cover" />
 
-        {/* Name */}
         <Text style={item.styles?.nameText}>{item.name}</Text>
 
-          {/* Small Description */}
           {item.category === 'Recent destination' && (
             <View
               style={{
@@ -50,7 +48,7 @@ export default function Planets() {
     <ScrollView style={{ flex: 1 }}>
       <Image source={backgroundImage} style={{width: '20px',height: '20px' ,position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} resizeMode="cover" />
       <View style={{ paddingHorizontal: 20 }}>
-        {/* Slider 1 */}
+
         <Text style={{fontSize: 20, fontWeight: 'bold', marginVertical: 10, color: '#A6A6A6' }}>Recent Destinations</Text>
         <FlatList
           data={PlanetShortDesc.filter((item) => item.category === 'Recent destination')}
@@ -60,7 +58,6 @@ export default function Planets() {
           renderItem={renderSliderItem}
         />
 
-        {/* Slider 2 */}
         <Text style={{color: '#A6A6A6', fontSize: 20, fontWeight: 'bold', marginVertical: 10, color: '#A6A6A6' }}>Popular Destinations</Text>
         <FlatList
           data={PlanetShortDesc.filter((item) => item.category === 'Popular destinations')}
@@ -70,7 +67,6 @@ export default function Planets() {
           renderItem={renderSliderItem}
         />
 
-        {/* Slider 3 */}
         <Text style={{ fontSize: 20, fontWeight: 'bold', marginVertical: 10, color: '#A6A6A6' }}>All Destinations</Text>
         <FlatList
           data={PlanetShortDesc.filter((item) => item.category === 'All destinations')}
