@@ -4,7 +4,7 @@ import { PlanetDescription, Planets, BookingPage, PaymentPage, TicketPrintPage, 
 
 const Stack = createStackNavigator();
 
-const stackNavigation = () => {
+const StackNavigation = () => {
   return (
     <Stack.Navigator screenOptions={{headerShown:false}}>
       <Stack.Screen name="Home" component={Home} />
@@ -20,4 +20,4 @@ const stackNavigation = () => {
   );
 };
 
-export default stackNavigation;
+export default StackNavigation;

@@ -17,12 +17,9 @@ const DrawerNavigator = () => {
     drawerStyle:styles.drawerStyle, 
     drawerLabelStyle:styles.drawerLabelStyle}}
     >
-      
       <Drawer.Screen
       name="Stack"
       options={{
-        drawerLabel: "Stack",
-        title: "Stack",
         drawerItemStyle: { height: 0 }
       }}
       component={StackNavigation}
@@ -34,7 +31,7 @@ const DrawerNavigator = () => {
         drawerLabel: "Home",
         title: "Home",
         drawerIcon: () => (
-        <SimpleLineIcons name="home" size={20} color={COLORS.red} />
+        <SimpleLineIcons name="home" size={20} color={COLORS.themeCol} />
         )
       }}
       component={Home}
@@ -46,22 +43,10 @@ const DrawerNavigator = () => {
         drawerLabel: "Planets",
         title: "Planets",
         drawerIcon: () => (
-        <SimpleLineIcons name="plane" size={20} color={COLORS.red} />
+        <SimpleLineIcons name="plane" size={20} color={COLORS.themeCol} />
         )
       }}
       component={Planets}
-      />
-        
-      <Drawer.Screen
-      name="Profile"
-      options={{
-        drawerLabel: "Profile",
-        title: "Profile",
-        drawerIcon: () => (
-        <SimpleLineIcons name="user" size={20} color={COLORS.red} />
-        )
-      }}
-      component={Profile}
       />
       
       <Drawer.Screen
@@ -70,10 +55,22 @@ const DrawerNavigator = () => {
         drawerLabel: "Booking",
         title: "Booking",
         drawerIcon: () => (
-        <SimpleLineIcons name="rocket" size={20} color={COLORS.red} />
+        <SimpleLineIcons name="wallet" size={20} color={COLORS.themeCol} />
         )
       }}
       component={BookingPage}
+      />
+        
+      <Drawer.Screen
+      name="Profile"
+      options={{
+        drawerLabel: "Profile",
+        title: "Profile",
+        drawerIcon: () => (
+        <SimpleLineIcons name="user" size={20} color={COLORS.themeCol} />
+        )
+      }}
+      component={Profile}
       />
         
       <Drawer.Screen
@@ -82,7 +79,7 @@ const DrawerNavigator = () => {
         drawerLabel: "Booking History",
         title: "Booking History",
         drawerIcon: () => (
-        <SimpleLineIcons name="calendar" size={20} color={COLORS.red} />
+        <SimpleLineIcons name="calendar" size={20} color={COLORS.themeCol} />
         )
       }}
       component={BookingHistory}
@@ -94,7 +91,7 @@ const DrawerNavigator = () => {
         drawerLabel: "Contact Us",
         title: "Contact Us",
         drawerIcon: () => (
-        <SimpleLineIcons name="phone" size={20} color={COLORS.red} />
+        <SimpleLineIcons name="phone" size={20} color={COLORS.themeCol} />
         )
       }}
       component={Contact}
@@ -106,7 +103,7 @@ const DrawerNavigator = () => {
         drawerLabel: "FAQ",
         title: "FAQ",
         drawerIcon: () => (
-        <SimpleLineIcons name="globe" size={20} color={COLORS.red} />
+        <SimpleLineIcons name="globe" size={20} color={COLORS.themeCol} />
         )
       }}
       component={FAQ}
@@ -118,7 +115,7 @@ const DrawerNavigator = () => {
         drawerLabel: "About Us",
         title: "About Us",
         drawerIcon: () => (
-        <SimpleLineIcons name="star" size={20} color={COLORS.red} />
+        <SimpleLineIcons name="star" size={20} color={COLORS.themeCol} />
         )
       }}
       component={About}
