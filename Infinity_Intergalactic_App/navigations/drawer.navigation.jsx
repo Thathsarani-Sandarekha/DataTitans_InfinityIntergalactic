@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import "react-native-gesture-handler";
-import {SimpleLineIcons } from "@expo/vector-icons";
-import { COLORS } from "../constents";
-import styles from "../screens/drawer.style"
-import CustomDrawerContent from '../screens/drawerProfile';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import {Home, Planets, Profile, BookingHistory, Contact, FAQ, About, PlanetDescription, BookingPage, PaymentPage, TicketPrintPage} from '../screens/index';
+import CustomDrawerContent from '../screens/drawerProfile';
+import styles from '../screens/drawer.style';
+import {SimpleLineIcons} from '@expo/vector-icons';
+import { COLORS } from "../constents";
+import StackNavigation from '../navigations/stack.navigation'; // Your StackNavigation component
 
 const Drawer = createDrawerNavigator();
 
@@ -18,6 +17,17 @@ const DrawerNavigator = () => {
     drawerStyle:styles.drawerStyle, 
     drawerLabelStyle:styles.drawerLabelStyle}}
     >
+      
+      <Drawer.Screen
+      name="Stack"
+      options={{
+        drawerLabel: "Stack",
+        title: "Stack",
+        drawerItemStyle: { height: 0 }
+      }}
+      component={StackNavigation}
+      />
+
       <Drawer.Screen
       name="Home"
       options={{
@@ -114,7 +124,7 @@ const DrawerNavigator = () => {
       component={About}
       />
       </Drawer.Navigator>
-
   )
 }
+
 export default DrawerNavigator;
