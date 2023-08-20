@@ -2,9 +2,7 @@ import React from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { PlanetShortDesc } from './PlanetShortDesc'; // Import the image data
-
 import backgroundImage from '../assets/images/mainbg.jpg'; // Import the background image
-
 export default function Planets() {
   const navigation = useNavigation();
 

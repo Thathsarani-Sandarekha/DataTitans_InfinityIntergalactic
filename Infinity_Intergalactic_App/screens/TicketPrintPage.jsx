@@ -40,19 +40,3 @@ export default function TicketPrintPage({ route }) {
   );
 }
 
-// After successful booking and payment
-const handleConfirmButtonPress = () => {
-  // Add the booked ticket to the list
-  addBookedTicket({
-    planetName,
-    fromLocation,
-    toLocation,
-    tripDate,
-    returnDate,
-    passengers,
-    selectedClass,
-  });
-
-  navigation.navigate('TicketPrintPage', { planetName });
-};
-
